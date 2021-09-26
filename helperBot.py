@@ -1,8 +1,8 @@
 import discord
 
 # import the token
-tokenFile = "token"
-token = tokenFile.readlines()[0].rstrip()
+with open('token') as tokenFile:
+	token = tokenFile.readlines()[0].rstrip()
 
 # boiler plate code
 client = discord.Client()
