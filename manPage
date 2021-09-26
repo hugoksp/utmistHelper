@@ -1,0 +1,3 @@
+**Commands**
+	1. `h! hash <email>`
+		-> hashes the email provided using sha256
