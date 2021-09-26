@@ -11,6 +11,9 @@ client = discord.Client()
 # parse message contents
 def commands(message):
 	content = message.split()	
+
+	if len(content) == 1:
+		return 'Not enough args, check with `h! help`'
 	
 	if content[1] == 'hash':
 		if len(content) != 3:
@@ -22,11 +25,13 @@ def commands(message):
 		with open('manPage') as helpText:
 			return ''.join(helpText.readlines())
 	
-	return 'received' + ' ' + content[1]
+	return 'Unknown command, check with `h! help`'
+
 
 @client.event
 async def on_ready():
 	print('We have logged in as {0.user}'.format(client))
+	await client.change_presence(status=discord.Status.invisible)
 
 @client.event
 async def on_message(message):
